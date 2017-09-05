@@ -14,9 +14,9 @@ require "user.php";
 echo "It works!<br>";
 
 $user = new voluntrack\User();
-$user->name = "new user";
+$user->first_name = "new user";
 
-echo "Hello $user->name!<br><br>";
+echo "Hello $user->first_name!<br><br>";
 echo phpinfo();
 
 ?>
