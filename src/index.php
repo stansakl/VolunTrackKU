@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <head>
     <title>VolunTrack</title>
@@ -18,7 +19,13 @@ $user = new User();
 $user->first_name = "new user";
 
 echo "Hello $user->first_name!<br><br>";
-echo phpinfo();
-
+//echo phpinfo();
+//var_dump($_SESSION);
+if(isset($_SESSION['logged_in'])) {
+    echo "The user is logged in!";
+}
+else {
+    echo "User is not logged in!";
+}
 ?>
 </body>
