@@ -1,3 +1,12 @@
 body {
     background-color: oldlace;
 }
+
+form {
+    padding-top: 5px;
+}
+
+input {
+    padding: inherit;
+    margin: 2px;
+}
