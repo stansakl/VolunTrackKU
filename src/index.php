@@ -10,10 +10,11 @@
     <h1 class="btn-info">Welcome to VolunTrack!</h1>
 <?php
 //namespace voluntrack;
-require "user.php";
+require "./voluntrack/user.php";
+use voluntrack\User;
 echo "It works!<br>";
 
-$user = new voluntrack\User();
+$user = new User();
 $user->first_name = "new user";
 
 echo "Hello $user->first_name!<br><br>";
