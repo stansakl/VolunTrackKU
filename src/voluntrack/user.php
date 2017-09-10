@@ -10,9 +10,19 @@ class User
     public $first_name = '';
     public $email = '';
 
+    /**
+     * @param string $first
+     * @param string $last_name
+     * @param string $email
+     */
     function __construct($first, $last, $email) {
         $this->first_name = $first;
         $this->last_name = $last;
         $this->email = $email;
+    }
+
+    function __destruct()
+    {
+        
     }
 }

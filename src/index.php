@@ -8,24 +8,21 @@
     <script src="/js/voluntrack.js"></script>
 </head>
 <body>
-    <h1 class="btn-info">Welcome to VolunTrack!</h1>
+    <main class="container">
+        <h1 class="btn-info">Welcome to VolunTrack!</h1>
+    </main>
+
 <?php
-//namespace voluntrack;
 require "./voluntrack/user.php";
 use voluntrack\User;
-echo "It works!<br>";
 
-$user = new User();
-$user->first_name = "new user";
-
-echo "Hello $user->first_name!<br><br>";
 //echo phpinfo();
 //var_dump($_SESSION);
-if(isset($_SESSION['logged_in'])) {
-    echo "The user is logged in!";
+if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
+    echo "<a href=\"/voluntrack/logout.php\">Logout</a>";
 }
 else {
-    echo "User is not logged in!";
+    echo "<a href=\"/voluntrack/login_view.php\">Login</a>";
 }
 ?>
 </body>
