@@ -5,12 +5,17 @@ use \voluntrack\User;
 
 class VoluntrackTest extends PHPUnit_Framework_TestCase
 {
+    protected $dummyUser;
+
+    protected function setUp()
+    {
+        $this->dummyUser = new \voluntrack\User('Example', 'User', 'test@example.com');
+    }
     // Individual tests go here
     public function testUser($value='')
     {
-        $dummyUser = new \voluntrack\User('Example', 'User', 'test@example.com');
-        $this->assertEquals($dummyUser->first_name, 'Example');
-        $this->assertEquals($dummyUser->last_name, 'User');
-        $this->assertEquals($dummyUser->email, 'test@example.com');
+        $this->assertEquals($this->dummyUser->first_name, 'Example');
+        $this->assertEquals($this->dummyUser->last_name, 'User');
+        $this->assertEquals($this->dummyUser->email, 'test@example.com');
     }
 }
