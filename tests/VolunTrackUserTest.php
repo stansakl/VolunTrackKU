@@ -1,9 +1,9 @@
 <?php
-require dirname(__DIR__) . '/src/voluntrack\user.php';
+require dirname(__DIR__) . '/src/voluntrack/user.php';
 
 use \voluntrack\User;
 
-class VoluntrackTest extends PHPUnit_Framework_TestCase
+class VoluntrackUserTest extends PHPUnit_Framework_TestCase
 {
     protected $dummyUser;
 
