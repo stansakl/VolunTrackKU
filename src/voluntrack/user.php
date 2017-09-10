@@ -10,7 +10,9 @@ class User
     public $first_name = '';
     public $email = '';
 
-    function __construct() {
-
+    function __construct($first, $last, $email) {
+        $this->first_name = $first;
+        $this->last_name = $last;
+        $this->email = $email;
     }
 }

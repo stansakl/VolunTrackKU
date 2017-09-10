@@ -9,6 +9,7 @@
     <filter>
         <whitelist>
             <directory>src</directory>
+            <directory>src/voluntrack</directory>
         </whitelist>
     </filter>
 </phpunit>
