@@ -7,9 +7,29 @@ namespace voluntrack;
 class DBManager
 {
 
-    function __construct(argument)
+    public function __construct($value='')
     {
 
+    }
+
+    public function connect_to_database($value='')
+    {
+        $servername = "localhost";
+        $username = "voluntrack";
+        $password = "voluntrack";
+
+        try
+        {
+            $conn = new \PDO("mysql:host=$servername;dbname=voluntrack", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            echo "Connected successfully";
+            return $conn;
+        }
+        catch(PDOException $e)
+        {
+            echo "Connection failed: " . $e->getMessage();
+        }
     }
 
 }
