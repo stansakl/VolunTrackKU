@@ -7,11 +7,20 @@ namespace voluntrack;
  */
 class DBManager
 {
-    public $conn = null;
+    private static $conn = null;
     public function __construct($value='')
     {
 
     }
+
+    public static function get_connection() {
+        if(self::$conn === null) {
+            self::$conn = self::connect_to_database();
+        }
+
+        return self::$conn;
+    }
+
 
     public function connect_to_database($value='')
     {
@@ -36,6 +45,15 @@ class DBManager
             return $conn;
         }
     }
+
+
+    public function user_exists($email='')
+    {
+        $stmt = self::get_connection()->prepare("SELECT email from USERS WHERE EMAIL = :email");
+        //$stmt->bind_param(':email',$email);
+        //$stmt->execute();
+    }
+
 
 }
 
