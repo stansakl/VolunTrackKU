@@ -49,9 +49,12 @@ class DBManager
 
     public function user_exists($email='')
     {
-        $stmt = self::get_connection()->prepare("SELECT email from USERS WHERE EMAIL = :email");
-        //$stmt->bind_param(':email',$email);
-        //$stmt->execute();
+        $stmt = self::get_connection()->prepare("SELECT username from USERS WHERE username = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        $result = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+        
     }
 
 
