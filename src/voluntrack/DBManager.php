@@ -84,7 +84,6 @@ class DBManager
         }
     }
 
-<<<<<<< HEAD
     /**
      * Returns 1 if user is allowed to login, else 0;
      */
@@ -117,8 +116,5 @@ class DBManager
         } catch (\Exception $e) {
             throw $e;
         }
-
-=======
->>>>>>> register_user
     }
 }
