@@ -10,6 +10,7 @@ $dbconn = $dbm::get_connection();
 
 if($dbconn !== null) {
     echo "Starting Registration process....<br>";
+    
 }
 /*
 foreach ($_POST as $key => $value) {
@@ -17,6 +18,6 @@ foreach ($_POST as $key => $value) {
 }
 */
 echo $_POST['email'];
-echo "<p>User exists: " . $dbm->user_exists(trim($_POST['email'])) . "</p>";
+//echo "<p>User exists: " . $dbm->user_exists(trim($_POST['email'])) . "</p>";
 
  ?>

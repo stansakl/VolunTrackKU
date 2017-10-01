@@ -46,7 +46,7 @@ class DBManager
         }
     }
 
-
+/*
     public function user_exists($email='')
     {
         echo "<br>inside user_exists() function<br> using $email parameter";
@@ -57,7 +57,7 @@ class DBManager
         $result = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
 
     }
-
+*/
 
 }
 
