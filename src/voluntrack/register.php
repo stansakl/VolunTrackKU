@@ -12,7 +12,9 @@ if ($_POST['password'] !== $_POST['confirmpwd']) {
 */
 try {
     $dbm->register_user($_POST['firstname'],$_POST['lastname'],$_POST['middlename'],$_POST['email'],$_POST['password']);
+    header("location: login.php");
 
 } catch (\Exception $e) {
     echo "Cannot register user: " . $e->getMessage();
+    header("location: register.php");
 }

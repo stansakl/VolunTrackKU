@@ -79,7 +79,7 @@ class DBManager
             $stmt->execute();
 
         } catch (\Exception $e) {
-            throw new \Exception("Error registering user. Username may not be unique!", 1);
+            throw new \Exception("Error registering user!", 1);
 
         }
     }
