@@ -1,6 +1,6 @@
 <?php
 namespace voluntrack;
-session_start();
+//session_start();
 /**
  * DBManager handles all of the database
  * connections and queries for voluntrack.
@@ -78,19 +78,27 @@ class DBManager
             $stmt->execute();
 
         } catch (\Exception $e) {
-        throw new \Exception("Error registering user. Username may not be unique!", 1);
+            throw new \Exception("Error registering user. Username may not be unique!", 1);
 
         }
-
-
-
-
-
     }
 
+    public function attempt_login($user, $password)
+    {
 
+        try {
+            $conn = self::get_connection();
+            $stmt = $conn->prepare("SELECT USERNAME FROM USERS WHERE USERNAME = :username");
+            $stmt->bindParam(':username', $user);
+            $stmt->execute();
 
+            $count = $stmt->rowCount();
+
+            return $count;
+
+        } catch (\Exception $e) {
+            throw $e;
+        }
+
+    }
 }
-
-
- ?>
