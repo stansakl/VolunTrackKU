@@ -1,13 +1,17 @@
 <?php
-namespace voluntrack;
 session_start();
+require "DBManager.php";
+use voluntrack\DBManager;
 
-echo "Logged in!<br><br>";
-//$logged_in = true;
+$dbm = DBManager::get_instance();
 
-foreach ($_POST as $key => $value) {
-    echo "$key: $value<br>";
+$canLogin = $dbm->attempt_login($_POST['username'], $_POST['password']);
+
+if ($canLogin == 1) {
+    $_SESSION['logged_in'] = true;
+    header("location:../index.php");
 }
-
-$_SESSION['logged_in'] = true;
-header("location:../index.php");
+else {
+    //redirect back to login page
+    header("location: login_view.php");
+}

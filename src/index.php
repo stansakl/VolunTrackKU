@@ -20,6 +20,7 @@ if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
 }
 else {
     echo "<a href=\"voluntrack/login_view.php\">Login</a>";
+    echo "<a href=\"voluntrack/register_view.php\">Register</a>";
 }
 ?>
 </body>
