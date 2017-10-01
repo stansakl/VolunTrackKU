@@ -58,12 +58,13 @@ class DBManager
 
     public function register_user($first, $last, $middle, $username, $password)
     {
+        /*
         echo "$first<br>";
         echo "$last<br>";
         echo "$middle<br>";
         echo "$username<br>";
         echo "$password<br>";
-
+        */
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         try {
@@ -83,18 +84,34 @@ class DBManager
         }
     }
 
+    /**
+     * Returns 1 if user is allowed to login, else 0;
+     */
     public function attempt_login($user, $password)
     {
 
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
         try {
             $conn = self::get_connection();
-            $stmt = $conn->prepare("SELECT USERNAME FROM USERS WHERE USERNAME = :username");
+            $stmt = $conn->prepare("SELECT USERNAME, PASSWORD FROM USERS WHERE USERNAME = :username");
             $stmt->bindParam(':username', $user);
             $stmt->execute();
 
             $count = $stmt->rowCount();
 
-            return $count;
+            //If there is exactly 1 user that matches, verify password
+            if ($count == 1) {
+                while ($row = $stmt->fetch()) {
+
+                    if (password_verify($password, $row['PASSWORD'])) {
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
+                }
+            }
 
         } catch (\Exception $e) {
             throw $e;

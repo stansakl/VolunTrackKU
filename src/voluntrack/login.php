@@ -12,6 +12,6 @@ if ($canLogin == 1) {
     header("location:../index.php");
 }
 else {
-    //redirect back to login password_get_info
+    //redirect back to login page
     header("location: login_view.php");
 }
