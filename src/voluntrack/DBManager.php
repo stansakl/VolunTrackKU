@@ -63,7 +63,7 @@ class DBManager
         echo "$middle<br>";
         echo "$username<br>";
         echo "$password<br>";
-        echo "Hashed password: " . password_hash($password, PASSWORD_DEFAULT) . "<br>";
+
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         try {
