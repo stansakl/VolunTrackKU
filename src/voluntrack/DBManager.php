@@ -1,6 +1,6 @@
 <?php
 namespace voluntrack;
-
+session_start();
 /**
  * DBManager handles all of the database
  * connections and queries for voluntrack.
@@ -22,12 +22,12 @@ class DBManager
     }
 
 
-    public function connect_to_database($value='')
+    private function connect_to_database($value='')
     {
         $servername = "localhost";
         $username = "voluntrack";
         $password = "voluntrack";
-        //$conn = null;
+
 
         try
         {
@@ -49,12 +49,13 @@ class DBManager
 
     public function user_exists($email='')
     {
-        $stmt = self::get_connection()->prepare("SELECT username from USERS WHERE username = :email");
+        echo "<br>inside user_exists() function<br> using $email parameter";
+        $stmt = self::get_connection()->prepare("SELECT USERNAME from USERS WHERE USERNAME = :email");
         $stmt->bindParam(':email', $email);
         $stmt->execute();
 
         $result = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
-        
+
     }
 
 
