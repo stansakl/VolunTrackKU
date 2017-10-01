@@ -3,21 +3,15 @@ require "DBManager.php";
 use voluntrack\DBManager;
 //echo "Registration Logic goes here!";
 //session_start();
-$dbm = new DBManager;
+$dbm = DBManager::get_instance();
 
+try {
+    $dbm->register_user($_POST['firstname'],$_POST['lastname'],$_POST['middlename'],$_POST['email'],$_POST['password']);
 
-$dbconn = $dbm::get_connection();
-
-if($dbconn !== null) {
-    echo "Starting Registration process....<br>";
-    
+} catch (\Exception $e) {
+    echo "Cannot register user: " . $e->getMessage();
 }
-/*
-foreach ($_POST as $key => $value) {
-    echo "$key: $value<br>";
-}
-*/
-echo $_POST['email'];
-//echo "<p>User exists: " . $dbm->user_exists(trim($_POST['email'])) . "</p>";
+
+
 
  ?>

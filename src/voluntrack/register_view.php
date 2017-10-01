@@ -14,6 +14,7 @@ require "htmlconstants.php";
      <main class="container">
          <form class="col-md-12" action="register.php" method="post">
              <input type="text" name="firstname" value="" placeholder="First Name"><br>
+             <input type="text" name="middlename" value="" placeholder="Middle Name"><br>
              <input type="text" name="lastname" value="" placeholder="Last Name"><br>
              <input type="email" name="email" value="" placeholder="Email"><br>
              <input type="password" name="password" value="" placeholder="Password"><br>

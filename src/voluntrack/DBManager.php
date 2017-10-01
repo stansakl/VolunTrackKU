@@ -8,6 +8,8 @@ session_start();
 class DBManager
 {
     private static $conn = null;
+    private static $dbm = null;
+
     public function __construct($value='')
     {
 
@@ -19,6 +21,14 @@ class DBManager
         }
 
         return self::$conn;
+    }
+
+    public static function get_instance() {
+        if(self::$dbm === null) {
+            self::$dbm = new DBManager();
+        }
+
+        return self::$dbm;
     }
 
 
@@ -46,18 +56,39 @@ class DBManager
         }
     }
 
-/*
-    public function user_exists($email='')
+    public function register_user($first, $last, $middle, $username, $password)
     {
-        echo "<br>inside user_exists() function<br> using $email parameter";
-        $stmt = self::get_connection()->prepare("SELECT USERNAME from USERS WHERE USERNAME = :email");
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
+        echo "$first<br>";
+        echo "$last<br>";
+        echo "$middle<br>";
+        echo "$username<br>";
+        echo "$password<br>";
+        echo "Hashed password: " . password_hash($password, PASSWORD_DEFAULT) . "<br>";
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
-        $result = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+        try {
+            $conn = self::get_connection();
+            $stmt = $conn->prepare("INSERT INTO USERS (NAME_FIRST, NAME_LAST, NAME_MIDDLE, USERNAME, PASSWORD )
+            VALUES (:firstname, :lastname, :middlename, :username, :password)");
+            $stmt->bindParam(':firstname', $first);
+            $stmt->bindParam(':lastname', $last);
+            $stmt->bindParam(':middlename', $middle);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':password', $password);
+            $stmt->execute();
+
+        } catch (\Exception $e) {
+        throw new \Exception("Error registering user. Username may not be unique!", 1);
+
+        }
+
+
+
+
 
     }
-*/
+
+
 
 }
 
