@@ -84,6 +84,7 @@ class DBManager
         }
     }
 
+<<<<<<< HEAD
     /**
      * Returns 1 if user is allowed to login, else 0;
      */
@@ -117,5 +118,7 @@ class DBManager
             throw $e;
         }
 
+=======
+>>>>>>> register_user
     }
 }
