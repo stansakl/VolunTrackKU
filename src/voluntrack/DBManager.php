@@ -69,7 +69,7 @@ class DBManager
 
         try {
             $conn = self::get_connection();
-            $stmt = $conn->prepare("INSERT INTO USERS (NAME_FIRST, NAME_LAST, NAME_MIDDLE, USERNAME, PASSWORD );
+            $stmt = $conn->prepare("INSERT INTO USERS (NAME_FIRST, NAME_LAST, NAME_MIDDLE, USERNAME, PASSWORD )
             VALUES (:firstname, :lastname, :middlename, :username, :password)");
             $stmt->bindParam(':firstname', $first);
             $stmt->bindParam(':lastname', $last);
