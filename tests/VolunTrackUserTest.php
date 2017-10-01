@@ -18,4 +18,24 @@ class VoluntrackUserTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->dummyUser->last_name, 'User');
         $this->assertEquals($this->dummyUser->email, 'test@example.com');
     }
+
+    public function testDBConnection($value='')
+    {
+        $servername = "localhost";
+        $username = "voluntrack";
+        $password = "voluntrack";
+
+        try
+        {
+            $conn = new PDO("mysql:host=$servername;dbname=voluntrack", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connected successfully";
+        }
+        catch(PDOException $e)
+        {
+            echo "Connection failed: " . $e->getMessage();
+        }
+
+    }
 }
