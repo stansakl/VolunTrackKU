@@ -16,10 +16,10 @@ use voluntrack\User;
 //echo phpinfo();
 //var_dump($_SESSION);
 if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
-    echo "<a href=\"/voluntrack/logout.php\">Logout</a>";
+    echo "<a href=\"voluntrack/logout.php\">Logout</a>";
 }
 else {
-    echo "<a href=\"/voluntrack/login_view.php\">Login</a>";
+    echo "<a href=\"voluntrack/login_view.php\">Login</a>";
 }
 ?>
 </body>
