@@ -34,20 +34,22 @@ class DBManager
 
     private function connect_to_database($value='')
     {
-        $servername = "localhost";
+        //$servername = "localhost";
+        $servername = "aa10nntj8dofc1n.cixyo4eg79dc.us-east-2.rds.amazonaws.com";
         $username = "voluntrack";
-        $password = "voluntrack";
+        $password = "CodeHawk810!";
+        $conn = null;
 
 
         try
         {
-            $conn = new \PDO("mysql:host=$servername;dbname=voluntrack", $username, $password);
+            $conn = new \PDO("mysql:host=$servername;dbname=ebdb", $username, $password);
             // set the PDO error mode to exception
             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             //echo "Connected successfully";
 
         }
-        catch(PDOException $e)
+        catch(\PDOException $e)
         {
             echo "Connection failed: " . $e->getMessage();
         }
