@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `ebdb`.`PROJECT` (
+CREATE TABLE IF NOT EXISTS `voluntrack`.`PROJECT` (
   `Project_id` INT NOT NULL AUTO_INCREMENT,
   `Project_Name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Project_id`),
