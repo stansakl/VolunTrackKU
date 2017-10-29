@@ -15,4 +15,4 @@ CREATE TABLE IF NOT EXISTS `voluntrack`.`USER_PROJECT` (
     REFERENCES `mydb`.`PROJECT` (`Project_Name` , `Project_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
+ENGINE = InnoDB;
