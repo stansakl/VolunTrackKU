@@ -26,6 +26,10 @@ else {
 if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
     echo "<a href=\"voluntrack/timeentry_view.php\">Enter Time</a><br>";
 }
+
+if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
+    echo "<a href=\"voluntrack/timereport_view.php\">Time Report</a><br>";
+}
 ?>
 
 
