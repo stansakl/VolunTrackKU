@@ -35,8 +35,10 @@ class DBManager
     private function connect_to_database($value='')
     {
         $servername = "localhost";
+        //$servername = "aa10nntj8dofc1n.cixyo4eg79dc.us-east-2.rds.amazonaws.com";
         $username = "voluntrack";
         $password = "voluntrack";
+        $conn = null;
 
 
         try
@@ -47,7 +49,7 @@ class DBManager
             //echo "Connected successfully";
 
         }
-        catch(PDOException $e)
+        catch(\PDOException $e)
         {
             echo "Connection failed: " . $e->getMessage();
         }
@@ -79,12 +81,11 @@ class DBManager
             $stmt->execute();
 
         } catch (\Exception $e) {
-            throw new \Exception("Error registering user. Username may not be unique!", 1);
+            throw new \Exception("Error registering user!", 1);
 
         }
     }
 
-<<<<<<< HEAD
     /**
      * Returns 1 if user is allowed to login, else 0;
      */
@@ -94,7 +95,7 @@ class DBManager
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-            $conn = self::get_connection();
+            $conn = $this->get_connection();
             $stmt = $conn->prepare("SELECT USERNAME, PASSWORD FROM USERS WHERE USERNAME = :username");
             $stmt->bindParam(':username', $user);
             $stmt->execute();
@@ -117,8 +118,5 @@ class DBManager
         } catch (\Exception $e) {
             throw $e;
         }
-
-=======
->>>>>>> register_user
     }
 }
