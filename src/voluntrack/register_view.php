@@ -4,23 +4,40 @@ require "htmlconstants.php";
 //namespace voluntrack;
 //require '../vendor/autoload.php';
 ?>
- <?php
- ?>
+
  <!DOCTYPE html>
  <?php echo HEADER; ?>
 
-
+ 
  <body>
-     <main class="container">
-         <form class="col-md-12" action="register.php" method="post">
-             <input type="text" name="firstname" value="" placeholder="First Name"><br>
-             <input type="text" name="middlename" value="" placeholder="Middle Name"><br>
-             <input type="text" name="lastname" value="" placeholder="Last Name"><br>
-             <input type="email" name="email" value="" placeholder="Email"><br>
-             <input type="password" name="password" value="" placeholder="Password"><br>
-              <input type="password" name="confirmpwd" value="" placeholder="Confirm Password"><br>
-             <input type="submit" name="registerbtn" value="Register">
-         </form>
-     </main>
-
- </body>
+ <?php require "navbar.php"; ?>
+ <div class="container">
+	  <div class="panel panel-primary">
+	  <div class="panel-heading">Register</div>
+	  <div class="panel-body">
+        <form  action="register.php" method="post">
+		    <div class="form-group">
+				<input type="text" class="form-control input-lg" name="firstname" value="" placeholder="First Name">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control input-lg" name="middlename" value="" placeholder="Middle Name">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control input-lg" name="lastname" value="" placeholder="Last Name">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control input-lg" name="email" value="" placeholder="Email">
+			</div>
+			 <div class="form-group">
+				<input type="password" class="form-control input-lg" name="password" value="" placeholder="Password">
+			 </div>
+			  <div class="form-group">
+				<input type="password" class="form-control input-lg" name="confirmpwd" value="" placeholder="Confirm Password">
+			 </div>
+             <button type="submit" class="btn btn-primary" name="registerbtn">Register</button>
+        </form>
+	  </div>
+	  </div>
+	  </div>
+ </div>
+</body>
