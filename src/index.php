@@ -1,13 +1,13 @@
 <?php session_start();
-require "./voluntrack/htmlconstants.php";
+require "./voluntrack/indexconstants.php";
 ?>
 <!DOCTYPE html>
 <?php echo HEADER; ?>
 
 <body>
-    <main class="container">
-        <h1 class="btn-info">VolunTrack!</h1>
-    </main>
+<?php require "./voluntrack/navbar.php"; ?>
+
+
 
 <?php
 require "./voluntrack/user.php";
@@ -19,8 +19,17 @@ if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
     echo "<a href=\"voluntrack/logout.php\">Logout</a><br>";
 }
 else {
-    echo "<a href=\"voluntrack/login_view.php\">Login</a><br>";
-    echo "<a href=\"voluntrack/register_view.php\">Register</a>";
+	echo "<div class=\"container\">";	
+	echo "<div class=\"panel panel-primary\">";
+	echo "<div class=\"panel-heading\">Welcome</div>";
+	echo "<div class=\"panel-body\">";
+	echo "<h4>Login</h4>";
+	echo "<a class=\"btn btn-primary btn-lg\" href=\"voluntrack/login_view.php\" role=\"button\">Login</a>";
+	echo "<h4>New user? Register Now!</h4>";
+	echo "<a class=\"btn btn-primary btn-lg\" href=\"voluntrack/register_view.php\" role=\"button\">Register</a>";
+	echo "</div>";
+	echo "</div>";
+	echo "</div>";
 }
 
 if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
