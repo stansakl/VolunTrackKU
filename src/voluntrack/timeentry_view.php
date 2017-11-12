@@ -15,7 +15,7 @@ require "htmlconstants.php";
 	  <div class="panel panel-primary">
 	  <div class="panel-heading">Time Entry</div>
 	  <div class="panel-body">
-        <form  action="" method="post">
+        <form  action="timeentry.php" method="post">
 		   <div class="form-group">
                 <label for="project">Enter the project you worked on.</label>
                 <select name="project" class="form-control input-lg">
