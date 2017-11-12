@@ -19,7 +19,7 @@ if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
     echo "<a href=\"voluntrack/logout.php\">Logout</a><br>";
 }
 else {
-	echo "<div class=\"container\">";	
+	echo "<div class=\"container\">";
 	echo "<div class=\"panel panel-primary\">";
 	echo "<div class=\"panel-heading\">Welcome</div>";
 	echo "<div class=\"panel-body\">";

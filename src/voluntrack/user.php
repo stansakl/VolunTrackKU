@@ -21,8 +21,28 @@ class User
         $this->email = $email;
     }
 
+    function getFirstName()
+    {
+        return $this->first_name;
+    }
+
+    function setFirstName($first)
+    {
+        $this->first_name = $first;
+    }
+
+    function getLastName()
+    {
+        return $this->last_name;
+    }
+
+    function setLastName($last)
+    {
+        $this->last_name = $last;
+    }
+
     function __destruct()
     {
-        
+
     }
 }

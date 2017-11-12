@@ -19,6 +19,18 @@ class VoluntrackUserTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->dummyUser->email, 'test@example.com');
     }
 
+    public function testUserFirstName()
+    {
+        $this->dummyUser->setFirstName("John");
+        $this->assertEquals($this->dummyUser->getFirstName(), "John");
+    }
+
+    public function testUserLastName()
+    {
+        $this->dummyUser->setLastName("Doe");
+        $this->assertEquals($this->dummyUser->getLastName(), "Doe");
+    }
+/*
     public function testDBConnection($value='')
     {
         $servername = "localhost";
@@ -38,4 +50,5 @@ class VoluntrackUserTest extends PHPUnit_Framework_TestCase
         }
 
     }
+    */
 }
