@@ -17,22 +17,22 @@ require "htmlconstants.php";
 	  <div class="panel-body">
         <form  action="register.php" method="post">
 		    <div class="form-group">
-				<input type="text" class="form-control input-lg" name="firstname" value="" placeholder="First Name">
+				<input type="text" class="form-control input-lg" name="firstname" value="" placeholder="First Name" required>
 			</div>
 			<div class="form-group">
 				<input type="text" class="form-control input-lg" name="middlename" value="" placeholder="Middle Name">
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control input-lg" name="lastname" value="" placeholder="Last Name">
+				<input type="text" class="form-control input-lg" name="lastname" value="" placeholder="Last Name" required>
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control input-lg" name="email" value="" placeholder="Email">
+				<input type="text" class="form-control input-lg" name="email" value="" placeholder="Email" required>
 			</div>
 			 <div class="form-group">
-				<input type="password" class="form-control input-lg" name="password" value="" placeholder="Password">
+				<input type="password" class="form-control input-lg" name="password" value="" placeholder="Password" required>
 			 </div>
 			  <div class="form-group">
-				<input type="password" class="form-control input-lg" name="confirmpwd" value="" placeholder="Confirm Password">
+				<input type="password" class="form-control input-lg" name="confirmpwd" value="" placeholder="Confirm Password" required>
 			 </div>
              <button type="submit" class="btn btn-primary" name="registerbtn">Register</button>
         </form>
