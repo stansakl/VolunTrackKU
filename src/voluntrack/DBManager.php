@@ -107,8 +107,7 @@ class DBManager
                 while ($row = $stmt->fetch()) {
 
                     if (password_verify($password, $row['PASSWORD'])) {
-                        //return 1;
-                        //it's a valid user, return the user ID
+                        //it's a valid user, set the is_admin flag and return the user ID
                         $_SESSION['is_admin'] = $row['IS_ADMIN'];
                         return $row['USER_ID'];
                     }
