@@ -1,20 +1,22 @@
 <?php
 require "DBManager.php";
 use voluntrack\DBManager;
-//echo "Registration Logic goes here!";
-//session_start();
+
+session_start();
 $dbm = DBManager::get_instance();
-/*
+
 if ($_POST['password'] !== $_POST['confirmpwd']) {
-    echo "Passwords do not match!";
+    $_SESSION['error'] = "Passwords do not match!";
     header("location: register.php");
 }
-*/
+
 try {
+    unset($_SESSION['error']);
     $dbm->register_user($_POST['firstname'],$_POST['lastname'],$_POST['middlename'],$_POST['email'],$_POST['password']);
-    header("location: login.php");
+    header("location: register.php");
 
 } catch (\Exception $e) {
-    echo "Cannot register user: " . $e->getMessage();
+    
+    $_SESSION['error'] = "An error occurred registering the user. Please try again.";
     header("location: register.php");
 }
