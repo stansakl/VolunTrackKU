@@ -96,7 +96,7 @@ class DBManager
 
         try {
             $conn = $this->get_connection();
-            $stmt = $conn->prepare("SELECT USERNAME, PASSWORD FROM USERS WHERE USERNAME = :username");
+            $stmt = $conn->prepare("SELECT USERNAME, USER_ID, PASSWORD FROM USERS WHERE USERNAME = :username");
             $stmt->bindParam(':username', $user);
             $stmt->execute();
 
@@ -107,12 +107,17 @@ class DBManager
                 while ($row = $stmt->fetch()) {
 
                     if (password_verify($password, $row['PASSWORD'])) {
-                        return 1;
+                        //return 1;
+                        //it's a valid user, return the user ID
+                        return $row['USER_ID'];
                     }
                     else {
                         return 0;
                     }
                 }
+            }
+            else {
+                return 0;
             }
 
         } catch (\Exception $e) {

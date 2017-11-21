@@ -9,7 +9,7 @@ class VoluntrackUserTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->dummyUser = new \voluntrack\User('Example', 'User', 'test@example.com');
+        $this->dummyUser = new \voluntrack\User('Example', '','User', 'test@example.com');
     }
     // Individual tests go here
     public function testUser($value='')
@@ -29,6 +29,12 @@ class VoluntrackUserTest extends PHPUnit_Framework_TestCase
     {
         $this->dummyUser->setLastName("Doe");
         $this->assertEquals($this->dummyUser->getLastName(), "Doe");
+    }
+
+    public function testMiddleLastName()
+    {
+        $this->dummyUser->setMiddleName("Quincy");
+        $this->assertEquals($this->dummyUser->getMiddleName(), "Quincy");
     }
 /*
     public function testDBConnection($value='')

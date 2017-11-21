@@ -15,6 +15,11 @@ require "htmlconstants.php";
 	  <div class="panel panel-primary">
 	  <div class="panel-heading">Log in</div>
 	  <div class="panel-body">
+	  <?php
+	  if(isset($_SESSION['error'])){
+		  echo "<div class=\"alert alert-danger\">" . $_SESSION['error'] . "</div>";
+	  }
+	  ?>
         <form  action="login.php" method="post">
 		    <div class="form-group">
 				<input type="text" class="form-control input-lg" name="username" value="" placeholder="User name or email">
