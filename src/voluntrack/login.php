@@ -9,7 +9,7 @@ $dbm = DBManager::get_instance();
 
 $canLogin = $dbm->attempt_login($_POST['username'], $_POST['password']);
 $user = new voluntrack\User("", "", "", "");
-if ($canLogin > 0) {
+if ($canLogin !== false && $canLogin > 0) {
     unset($_SESSION['error']);
     unset($canLogin);
     $_SESSION['logged_in'] = true;
@@ -20,6 +20,10 @@ if ($canLogin > 0) {
 else {
     //redirect back to login page
     $_SESSION['error'] = "Bad username or password!";
+    $_SESSION['logged_in'] = false;
+    $_SESSION['user'] = '';
+    unset($canLogin);
+
     header("location: login_view.php");
 }
 
