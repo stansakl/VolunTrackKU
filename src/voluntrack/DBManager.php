@@ -87,7 +87,7 @@ class DBManager
     }
 
     /**
-     * Returns 1 if user is allowed to login, else 0;
+     * Returns tghe user id if the user is allowed to login, else 0;
      */
     public function attempt_login($user, $password)
     {
