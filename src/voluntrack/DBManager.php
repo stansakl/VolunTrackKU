@@ -1,6 +1,6 @@
 <?php
 namespace voluntrack;
-//session_start();
+session_start();
 /**
  * DBManager handles all of the database
  * connections and queries for voluntrack.
@@ -96,7 +96,7 @@ class DBManager
 
         try {
             $conn = $this->get_connection();
-            $stmt = $conn->prepare("SELECT USERNAME, USER_ID, PASSWORD FROM USERS WHERE USERNAME = :username");
+            $stmt = $conn->prepare("SELECT USERNAME, USER_ID, PASSWORD, IS_ADMIN FROM USERS WHERE USERNAME = :username");
             $stmt->bindParam(':username', $user);
             $stmt->execute();
 
@@ -109,6 +109,7 @@ class DBManager
                     if (password_verify($password, $row['PASSWORD'])) {
                         //return 1;
                         //it's a valid user, return the user ID
+                        $_SESSION['is_admin'] = $row['IS_ADMIN'];
                         return $row['USER_ID'];
                     }
                     else {

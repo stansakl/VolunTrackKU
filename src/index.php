@@ -37,8 +37,13 @@ if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
 }
 
 if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
-    echo "<a href=\"voluntrack/timereport_view.php\">Time Report</a><br>";
+	echo "<a href=\"voluntrack/timereport_view.php\">My Time Report</a><br>";
+	
+	if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
+		echo "<a href=\"voluntrack/adminreport_view.php\">Organizational Time Report</a><br>";
+	}
 }
+
 ?>
 
 
