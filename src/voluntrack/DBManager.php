@@ -124,4 +124,20 @@ class DBManager
             throw $e;
         }
     }
+
+    /**
+     * Adds a time entry for a single user
+     */
+    public function add_time_for_user($user_id, $project, $start, $end){
+
+    }
+
+    /**
+     * Reports time for a single user.
+     */
+    public function report_time_for_user($user_id, $start, $end){
+        
+    }
+
+
 }
