@@ -139,6 +139,10 @@ class DBManager
         
     }
 
+    public function report_time_for_user_by_project($user_id, $start, $end, $project_name){
+        
+    }
+
     public function report_time_for_all_users () {
         $retVal = "";
 
@@ -157,7 +161,7 @@ class DBManager
                 left outer join project p on up.project_id = p.project_id
                 order by Project_Name"
             );
-            $stmt->bindParam(':username', $user);
+
             $stmt->execute();
 
             $count = $stmt->rowCount();
@@ -178,7 +182,4 @@ class DBManager
             throw $e;
         }
     }
-    
-
-
 }
