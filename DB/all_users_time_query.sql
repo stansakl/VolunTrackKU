@@ -1,5 +1,6 @@
 select u.user_id,
        u.NAME_FIRST,
+       u.NAME_MIDDLE,
        u.NAME_LAST,
        up.project_id,
        p.Project_Name,

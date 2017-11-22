@@ -147,6 +147,7 @@ class DBManager
             $stmt = $conn->prepare(
                 "select u.user_id,
                 u.NAME_FIRST,
+                u.NAME_MIDDLE,
                 u.NAME_LAST,
                 up.project_id,
                 p.Project_Name,
@@ -162,7 +163,13 @@ class DBManager
             $count = $stmt->rowCount();
 
                 while ($row = $stmt->fetch()) {
-                    $retVal = $retVal . "<tr><td>" . $row['NAME_FIRST'] . "</td><td>" . $row['NAME_LAST'] . "</td><td>" . $row['hours'] ."</td></tr>";
+                    $retVal = $retVal . "<tr><td>" . 
+                    $row['NAME_FIRST'] . "</td><td>" . 
+                    $row['NAME_MIDDLE'] . "</td><td>" .
+                    $row['NAME_LAST'] . "</td><td>" . 
+                    $row['Project_Name'] . "</td><td>" .
+                    $row['hours'] .
+                    "</td></tr>";
                 }
             return $retVal;
            

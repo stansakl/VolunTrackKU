@@ -22,7 +22,15 @@ $dbm = DBManager::get_instance();
 
 $reportHTML = $dbm->report_time_for_all_users();
 ?>
-<table class="table table-striped">
+<table class="table table-striped table-hover">
+<tr>
+	<th>First</th>
+	<th>Middle</th>
+	<th>Last</th>
+	<th>Project</th>
+	<th>Hours</th>
+</tr>
+
 <?php 
 echo $reportHTML;
 ?>
