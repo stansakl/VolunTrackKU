@@ -28,14 +28,20 @@ require "htmlconstants.php";
                 </select>
 			</div>
             <div class="form-group">
+            <!--
                 <label for="startdate">Enter the start date.</label>
 				<input type="date" class="form-control input-lg" name="startdate"><br>
+                -->
+                <label for="projectdate">Enter the date.</label>
+				<input type="date" class="form-control input-lg" name="projectdate" <br>
                 <label for="starttime">Enter the start time.</label>
 				<input type="time" class="form-control input-lg" name="starttime">
 			</div>
             <div class="form-group">
+            <!--
                 <label for="enddate">Enter the end date.</label>
 				<input type="date" class="form-control input-lg" name="enddate"><br>
+                -->
                 <label for="endtime">Enter the end time.</label>
 				<input type="time" class="form-control input-lg" name="endtime">
 			</div>
