@@ -33,9 +33,9 @@ require "htmlconstants.php";
 				<input type="date" class="form-control input-lg" name="startdate"><br>
                 -->
                 <label for="projectdate">Enter the date.</label>
-				<input type="date" class="form-control input-lg" name="projectdate" <br>
+				<input type="date" class="form-control input-lg" name="projectdate" required><br>
                 <label for="starttime">Enter the start time.</label>
-				<input type="time" class="form-control input-lg" name="starttime">
+				<input type="time" class="form-control input-lg" name="starttime" required>
 			</div>
             <div class="form-group">
             <!--
@@ -43,7 +43,7 @@ require "htmlconstants.php";
 				<input type="date" class="form-control input-lg" name="enddate"><br>
                 -->
                 <label for="endtime">Enter the end time.</label>
-				<input type="time" class="form-control input-lg" name="endtime">
+				<input type="time" class="form-control input-lg" name="endtime"required>
 			</div>
 
              <button type="submit" class="btn btn-primary" name="timeentrybtn">Enter Time</button>
