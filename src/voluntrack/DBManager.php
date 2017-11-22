@@ -139,9 +139,11 @@ class DBManager
     }
 
     /**
-     * Reports time for a single user for all projects across a date range.
+     * Reports time for a single user for all projects across a date range unless
+     * a value is provided for $project_name, in which case it returns only the hours
+     * for that project.
      */
-    public function report_time_for_user_by_project($user_id, $start, $end, $project_name){
+    public function report_time_for_user_by_project($user_id, $start, $end, $project_name = ''){
         
     }
 
