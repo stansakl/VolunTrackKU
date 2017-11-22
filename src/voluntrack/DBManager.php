@@ -1,6 +1,6 @@
 <?php
 namespace voluntrack;
-session_start();
+//session_start();
 /**
  * DBManager handles all of the database
  * connections and queries for voluntrack.
@@ -138,6 +138,40 @@ class DBManager
     public function report_time_for_user($user_id, $start, $end){
         
     }
+
+    public function report_time_for_all_users () {
+        $retVal = "";
+
+        try {
+            $conn = $this->get_connection();
+            $stmt = $conn->prepare(
+                "select u.user_id,
+                u.NAME_FIRST,
+                u.NAME_LAST,
+                up.project_id,
+                p.Project_Name,
+                timediff(PROJECT_END_DATE_TIME, PROJECT_START_DATE_TIME) as hours
+                from user_project up
+                left outer join users u on u.user_id = up.user_id
+                left outer join project p on up.project_id = p.project_id
+                order by Project_Name"
+            );
+            $stmt->bindParam(':username', $user);
+            $stmt->execute();
+
+            $count = $stmt->rowCount();
+
+                while ($row = $stmt->fetch()) {
+                    $retVal = $retVal . "<tr><td>" . $row['NAME_FIRST'] . "</td><td>" . $row['NAME_LAST'] . "</td><td>" . $row['hours'] ."</td></tr>";
+                }
+            return $retVal;
+           
+
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+    
 
 
 }
