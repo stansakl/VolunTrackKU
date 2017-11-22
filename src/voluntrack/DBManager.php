@@ -58,6 +58,11 @@ class DBManager
         }
     }
 
+    /**
+     * Adds the user to the USERS table in the database.
+     * Duplicates are handled at the database level. The username MUST
+     * be unique.
+     */
     public function register_user($first, $last, $middle, $username, $password)
     {
         
