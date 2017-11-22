@@ -139,10 +139,16 @@ class DBManager
         
     }
 
+    /**
+     * Reports time for a single user for all projects across a date range.
+     */
     public function report_time_for_user_by_project($user_id, $start, $end, $project_name){
         
     }
 
+    /**
+     * Reports time for all users across all projects
+     */
     public function report_time_for_all_users () {
         $retVal = "";
 
