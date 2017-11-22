@@ -60,13 +60,7 @@ class DBManager
 
     public function register_user($first, $last, $middle, $username, $password)
     {
-        /*
-        echo "$first<br>";
-        echo "$last<br>";
-        echo "$middle<br>";
-        echo "$username<br>";
-        echo "$password<br>";
-        */
+        
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         try {
