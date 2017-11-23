@@ -139,13 +139,53 @@ class DBManager
     }
 
     /**
-     * Reports time for a single user for all projects across a date range unless
-     * a value is provided for $project_name, in which case it returns only the hours
-     * for that project.
+     * Reports time for a single user for a single project
      */
-    public function report_time_for_user_by_project($user_id, $start, $end, $project_name = ''){
+    public function report_time_for_user_by_project($username, $start_date, $end_date, $project_name){
+        $retVal = "";
         
-    }
+                try {
+                    $conn = $this->get_connection();
+                    $stmt = $conn->prepare(
+                        "select u.user_id,
+                        u.NAME_FIRST,
+                        u.NAME_MIDDLE,
+                        u.NAME_LAST,
+                        up.project_id,
+                        p.Project_Name,
+                        TIME_TO_SEC(TIMEDIFF(PROJECT_END_DATE_TIME, PROJECT_START_DATE_TIME))/3600 as hours
+                        from user_project up
+                        left outer join users u on u.user_id = up.user_id
+                        left outer join project p on up.project_id = p.project_id
+                        where u.username = :username
+                          and up.PROJECT_START_DATE_TIME >= :project_start
+                          and up.PROJECT_END_DATE_TIME <= :project_end 
+                          and p.Project_Name = :project_name
+                        order by Project_Name"
+                    );
+                    $stmt->bindParam(':username', $user);
+                    $stmt->bindParam(':project_start', $start_date);
+                    $stmt->bindParam(':project_end', $end_date);
+                    $stmt->bindParam(':project_name', $project_name);
+                    $stmt->execute();
+        
+                    $retVal = $retVal . "<tr><td>" . 
+                   "project" . "</td><td>" .
+                    4 .
+                    "</td></tr>";
+                    while ($row = $stmt->fetch()) {
+                        $retVal = $retVal . "<tr><td>" . 
+                        $row['Project_Name'] . "</td><td>" .
+                        $row['hours'] .
+                        "</td></tr>";
+                    }
+                    return $retVal;
+                   
+        
+                } catch (\Exception $e) {
+                    throw $e;
+                }
+            }
 
     /**
      * Reports time for all users across all projects
