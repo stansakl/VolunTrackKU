@@ -143,6 +143,7 @@ class DBManager
         $groundsMaintHours = 0;
         $officeWorkHours = 0;
         $socializationHours = 0;
+        $totalHours = 0;
         
         
         try {
@@ -201,7 +202,8 @@ class DBManager
                 $retVal = $retVal . "<tr><td>" .  \SOCIALIZATION . "</td><td>" . $socializationHours .  "</td></tr>";
             }
             
-            
+            $totalHours = $adoptionEventHours + $clinicHours + $fundRaisingHours + $groundsMaintHours + $officeWorkHours + $socializationHours;
+            $retVal = $retVal . "<tr><td><strong>Total Hours</strong></td><td>" . $totalHours .  "</td></tr>";
 
         } catch (\Exception $e) {
             throw $e;
