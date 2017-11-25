@@ -5,7 +5,6 @@ require "DBManager.php";
 use voluntrack\DBManager;
 ?>
 
-
  <!DOCTYPE html>
  <?php echo HEADER; ?>
 
@@ -18,7 +17,14 @@ use voluntrack\DBManager;
 	  <div class="panel-body">
       <?php 
       $dbm = DBManager::get_instance();      
-      $time_result = $dbm->report_time_for_user_by_project( $_SESSION['user'], $_POST['startdate'], $_POST['enddate'], $_POST['project']); 
+      $user = $_SESSION['user'];
+      $project = $_POST['project'];
+      $start = $_POST['startdate'];
+      $end = $_POST['enddate'];
+      $time_result = $dbm->report_time_for_user_by_project($user, 
+                                                           $start, 
+                                                           $end,
+                                                           $project); 
       ?>
     <table class="table table-striped">
       <?php
@@ -26,7 +32,7 @@ use voluntrack\DBManager;
       ?>
       </table>
       <?php
-      var_dump($_POST);
+     // var_dump($_POST);
       ?>
 	  </div>
 	  </div>
