@@ -11,7 +11,7 @@ $canLogin = $dbm->attempt_login($_POST['username'], $_POST['password']);
 $user = new voluntrack\User("", "", "", "");
 if ($canLogin !== false && $canLogin > 0) {
     unset($_SESSION['error']);
-    unset($canLogin);
+    //unset($canLogin);
     $_SESSION['logged_in'] = true;
     $_SESSION['user'] = $_POST['username'];
     $_SESSION['user_id'] = $canLogin;
