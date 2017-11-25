@@ -7,3 +7,12 @@ define("HEADER", "<head>
 	<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/voluntrack.css\">
     <script src=\"../js/voluntrack.js\"></script>
 </head>");
+
+
+const ALL = "All";
+const ADOPTION_EVENT = "Adoption Event";
+const CLINIC = "Clinic";
+const FUNDRAISING = "Fundraising Event";
+const GROUNDS = "Grounds Maintainance";
+const OFFICE = "Office Work";
+const SOCIALIZATION = "Socialization";

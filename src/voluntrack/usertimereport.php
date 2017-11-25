@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "htmlconstants.php";
+require_once "htmlconstants.php";
 require "DBManager.php";
 use voluntrack\DBManager;
 ?>

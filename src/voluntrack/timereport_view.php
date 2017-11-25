@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "htmlconstants.php";
+require_once "htmlconstants.php";
 //namespace voluntrack;
 //require '../vendor/autoload.php';
 ?>
@@ -10,7 +10,9 @@ require "htmlconstants.php";
 
 
  <body>
- <?php require "navbar.php"; ?>
+ <?php
+ require "navbar.php";       
+ ?>
 	<div class="container">
 	  <div class="panel panel-primary">
 	  <div class="panel-heading">Time Report for <?php echo $_SESSION['user']; ?></div>

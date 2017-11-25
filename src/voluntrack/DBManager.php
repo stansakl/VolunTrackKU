@@ -1,6 +1,7 @@
 <?php
 namespace voluntrack;
 //session_start();
+require_once "htmlconstants.php";
 /**
  * DBManager handles all of the database
  * connections and queries for voluntrack.
@@ -136,6 +137,13 @@ class DBManager
      */
     public function report_time_for_user($username, $start_date, $end_date){
         $retVal = "";
+        $adoptionEventHours = 0;
+        $clinicHours = 0;
+        $fundRaisingHours = 0;
+        $groundsMaintHours = 0;
+        $officeWorkHours = 0;
+        $socializationHours = 0;
+        
         
         try {
             $conn = $this->get_connection();
@@ -157,10 +165,40 @@ class DBManager
             
             
             while ($row = $stmt->fetch()) {
-                $retVal = $retVal . "<tr><td>" . 
+              /*  $retVal = $retVal . "<tr><td>" . 
                 $row['Project_Name'] . "</td><td>" .
                 $row['hours'] .
                 "</td></tr>";
+                */
+                switch($row['Project_Name']) {
+                    case \ADOPTION_EVENT:
+                        $adoptionEventHours += $row['hours'];
+                        break;
+                    case \CLINIC:
+                        $clinicHours += $row['hours'];
+                        break;
+                    case \FUNDRAISING:
+                        $fundRaisingHours += $row['hours'];
+                        break;
+                    case \GROUNDS:
+                        $groundsMaintHours += $row['hours'];
+                        break;
+                    case \OFFICE:
+                        $officeWorkHours += $row['hours'];
+                        break;
+                    case \SOCIALIZATION:
+                        $socializationHours += $row['hours'];
+                        break;
+                    default:
+                        break;
+                }
+
+                $retVal = "<tr><td>" .  \ADOPTION_EVENT . "</td><td>" . $adoptionEventHours .  "</td></tr>";
+                $retVal = $retVal . "<tr><td>" .  \CLINIC . "</td><td>" . $clinicHours .  "</td></tr>";
+                $retVal = $retVal . "<tr><td>" .  \FUNDRAISING . "</td><td>" . $fundRaisingHours .  "</td></tr>";
+                $retVal = $retVal . "<tr><td>" .  \GROUNDS . "</td><td>" . $groundsMaintHours .  "</td></tr>";
+                $retVal = $retVal . "<tr><td>" .  \OFFICE . "</td><td>" . $officeWorkHours .  "</td></tr>";
+                $retVal = $retVal . "<tr><td>" .  \SOCIALIZATION . "</td><td>" . $socializationHours .  "</td></tr>";
             }
             
             
