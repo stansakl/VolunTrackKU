@@ -21,10 +21,21 @@ use voluntrack\DBManager;
       $project = $_POST['project'];
       $start = $_POST['startdate'];
       $end = $_POST['enddate'];
-      $time_result = $dbm->report_time_for_user_by_project($user, 
-                                                           $start, 
-                                                           $end,
-                                                           $project); 
+      $time_result = "";
+
+      if($project == "All") {
+        $time_result = $dbm->report_time_for_user($user, 
+        $start, 
+        $end
+      ); 
+
+      }else {
+        $time_result = $dbm->report_time_for_user_by_project($user, 
+        $start, 
+        $end,
+        $project); 
+      }
+      
       ?>
     <table class="table table-striped">
       <?php

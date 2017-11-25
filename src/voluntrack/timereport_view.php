@@ -25,7 +25,7 @@ require "htmlconstants.php";
                     <option value="Fundraising Event">Fundraising Event</option>
                     <option value="Grounds Maintainance">Grounds Maintenance</option>
                     <option value="Office Work">Office Work</option>
-                    <option value="Socializtion">Socialization</option>
+                    <option value="Socialization">Socialization</option>
                 </select>
 			</div>
 			<div class="form-group">
