@@ -302,6 +302,8 @@ class DBManager
                 u.NAME_LAST,
                 up.project_id,
                 p.Project_Name,
+                PROJECT_START_DATE_TIME,
+                PROJECT_END_DATE_TIME,
                 TIME_TO_SEC(TIMEDIFF(PROJECT_END_DATE_TIME, PROJECT_START_DATE_TIME))/3600 as hours
                 from user_project up
                 left outer join users u on u.user_id = up.user_id
@@ -317,8 +319,10 @@ class DBManager
                     $retVal = $retVal . "<tr><td>" . 
                     $row['NAME_FIRST'] . "</td><td>" . 
                     $row['NAME_MIDDLE'] . "</td><td>" .
-                    $row['NAME_LAST'] . "</td><td>" . 
+                    $row['NAME_LAST'] . "</td><td>" .                   
                     $row['Project_Name'] . "</td><td>" .
+                    $row['PROJECT_START_DATE_TIME'] . "</td><td>" . 
+                    $row['PROJECT_END_DATE_TIME'] . "</td><td>" .
                     $row['hours'] .
                     "</td></tr>";
                 }

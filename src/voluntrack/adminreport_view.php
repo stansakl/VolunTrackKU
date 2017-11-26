@@ -28,6 +28,8 @@ $reportHTML = $dbm->report_time_for_all_users();
 	<th>Middle</th>
 	<th>Last</th>
 	<th>Project</th>
+	<th>Start</th>
+	<th>End</th>
 	<th>Hours</th>
 </tr>
 
