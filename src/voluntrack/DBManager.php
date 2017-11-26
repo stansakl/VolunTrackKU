@@ -70,7 +70,7 @@ class DBManager
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-            $conn = self::get_connection();
+            $conn = $this->get_connection();
             $stmt = $conn->prepare("INSERT INTO USERS (NAME_FIRST, NAME_LAST, NAME_MIDDLE, USERNAME, PASSWORD )
             VALUES (:firstname, :lastname, :middlename, :username, :password)");
             $stmt->bindParam(':firstname', $first);
@@ -128,8 +128,45 @@ class DBManager
     /**
      * Adds a time entry for a single user
      */
-    public function add_time_for_user($user_id, $project, $start, $end){
+    public function add_time_for_user($username, $projectName, $start, $end){
+        $retVal = "";
 
+        $end = date("Y-m-d H:i:s", $end);
+        $start = date("Y-m-d H:i:s", $start); //date ("Y-m-d H:i:s", $phptime);
+
+        echo $start . "<br>";
+        echo $end . "<br>";
+        echo $username . "<br>";
+        echo $projectName . "<br>";
+        
+
+        //return;
+
+        try {
+            $conn = $this->get_connection();
+            $stmt = $conn->prepare("insert into user_project (USER_ID, PROJECT_ID, PROJECT_START_DATE_TIME, PROJECT_END_DATE_TIME)
+                                    SELECT USER_ID,
+                                        Project_id,
+                                        :start,
+                                        :end       
+                                    FROM users,
+                                        project
+                                    where username = :username
+                                    and Project_Name = :project");
+            $stmt->bindParam(':start', $start);
+            $stmt->bindParam(':end', $end);
+            $stmt->bindParam(':project', $projectName);
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+
+        } catch (\Exception $e) {
+            //echo $start;
+            
+            echo $e->getMessage() . "<br>" . $e->getFile() . ": " . $e->getLine();
+            throw new \Exception("Error entering time!", 1);
+            
+
+        }
     }
 
     /**
@@ -166,11 +203,7 @@ class DBManager
             
             
             while ($row = $stmt->fetch()) {
-              /*  $retVal = $retVal . "<tr><td>" . 
-                $row['Project_Name'] . "</td><td>" .
-                $row['hours'] .
-                "</td></tr>";
-                */
+             
                 switch($row['Project_Name']) {
                     case \ADOPTION_EVENT:
                         $adoptionEventHours += $row['hours'];
