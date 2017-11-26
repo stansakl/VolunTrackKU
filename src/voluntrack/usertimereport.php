@@ -13,7 +13,10 @@ use voluntrack\DBManager;
  <?php require "navbar.php"; ?>
 	<div class="container">
 	  <div class="panel panel-primary">
-	  <div class="panel-heading">Time Report for <?php echo $_SESSION['user']; ?></div>
+	  <div class="panel-heading">
+      Time Report for <?php echo $_SESSION['user']; ?> for 
+      <?php echo $_POST['startdate']; ?> through <?php echo $_POST['enddate'];?>
+    </div>
 	  <div class="panel-body">
       <?php 
       $dbm = DBManager::get_instance();      
