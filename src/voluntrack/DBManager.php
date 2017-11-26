@@ -250,7 +250,8 @@ class DBManager
      */
     public function report_time_for_user_by_project($username, $start_date, $end_date, $project_name){
         $retVal = "";
-        
+        $totalHours = 0;
+
         $project_name = trim($project_name);
                 try {
                     $conn = $this->get_connection();
@@ -274,14 +275,11 @@ class DBManager
                     
                    
                     while ($row = $stmt->fetch()) {
-                        $retVal = $retVal . "<tr><td>" . 
-                        $row['Project_Name'] . "</td><td>" .
-                        $row['hours'] .
-                        "</td></tr>";
+                        $totalHours += $row['hours'];
                     }
+
+                    $retVal = $retVal . "<tr><td>" . $project_name . "</td><td>" . $totalHours . "</td></tr>";        
                    
-                   
-        
                 } catch (\Exception $e) {
                     throw $e;
                 }
