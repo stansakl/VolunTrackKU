@@ -2,8 +2,7 @@
 session_start();
 require "DBManager.php";
 use voluntrack\DBManager;
-//echo "Registration Logic goes here!";
-//session_start();
+
 $dbm = DBManager::get_instance();
 
 $start_datetime_string = strtotime($_POST['projectdate'] . " " . $_POST['starttime']);

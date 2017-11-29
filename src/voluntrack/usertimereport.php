@@ -45,9 +45,6 @@ use voluntrack\DBManager;
       echo $time_result;
       ?>
       </table>
-      <?php
-     // var_dump($_POST);
-      ?>
 	  </div>
 	  </div>
 	  </div>
