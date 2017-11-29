@@ -3,8 +3,7 @@ session_start();
 require "htmlconstants.php";
 require "DBManager.php";
 use voluntrack\DBManager;
-//namespace voluntrack;
-//require '../vendor/autoload.php';
+
 ?>
 
  <!DOCTYPE html>

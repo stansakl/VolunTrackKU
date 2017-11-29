@@ -1,8 +1,7 @@
 <?php
 session_start();
 require "htmlconstants.php";
-//namespace voluntrack;
-//require '../vendor/autoload.php';
+
 ?>
 
  <!DOCTYPE html>
@@ -28,10 +27,6 @@ require "htmlconstants.php";
                 </select>
 			</div>
             <div class="form-group">
-            <!--
-                <label for="startdate">Enter the start date.</label>
-				<input type="date" class="form-control input-lg" name="startdate"><br>
-                -->
                 <label for="projectdate">Enter the date.</label>
 				<input type="date" class="form-control input-lg" name="projectdate" required><br>
                 <label for="starttime">Enter the start time.</label>

@@ -1,8 +1,7 @@
 <?php
 session_start();
 require "htmlconstants.php";
-//namespace voluntrack;
-//require '../vendor/autoload.php';
+
 ?>
 
  <!DOCTYPE html>
