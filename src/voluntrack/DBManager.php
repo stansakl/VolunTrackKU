@@ -45,6 +45,7 @@ class DBManager
         try
         {
             $conn = new \PDO("mysql:host=$servername;dbname=voluntrack", $username, $password);
+            //$conn = new \PDO("mysql:host=$servername;dbname=ebdb", $username, $password);
             // set the PDO error mode to exception
             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             //echo "Connected successfully";
@@ -144,13 +145,13 @@ class DBManager
 
         try {
             $conn = $this->get_connection();
-            $stmt = $conn->prepare("insert into user_project (USER_ID, PROJECT_ID, PROJECT_START_DATE_TIME, PROJECT_END_DATE_TIME)
+            $stmt = $conn->prepare("insert into USER_PROJECT (USER_ID, PROJECT_ID, PROJECT_START_DATE_TIME, PROJECT_END_DATE_TIME)
                                     SELECT USER_ID,
                                         Project_id,
                                         :start,
                                         :end       
-                                    FROM users,
-                                        project
+                                    FROM USERS,
+                                        PROJECT
                                     where username = :username
                                     and Project_Name = :project");
             $stmt->bindParam(':start', $start);
@@ -188,9 +189,9 @@ class DBManager
             $stmt = $conn->prepare(
                 "select p.Project_Name,
                 TIME_TO_SEC(TIMEDIFF(PROJECT_END_DATE_TIME, PROJECT_START_DATE_TIME))/3600 as hours
-                from user_project up
-                left outer join users u on u.user_id = up.user_id
-                left outer join project p on up.project_id = p.project_id
+                from USER_PROJECT up
+                left outer join USERS u on u.user_id = up.user_id
+                left outer join PROJECT p on up.project_id = p.project_id
                 where u.username = :username
                     and up.PROJECT_START_DATE_TIME >= :project_start
                     and up.PROJECT_END_DATE_TIME <= :project_end
@@ -258,9 +259,9 @@ class DBManager
                     $stmt = $conn->prepare(
                         "select p.Project_Name,
                         TIME_TO_SEC(TIMEDIFF(PROJECT_END_DATE_TIME, PROJECT_START_DATE_TIME))/3600 as hours
-                        from user_project up
-                        left outer join users u on u.user_id = up.user_id
-                        left outer join project p on up.project_id = p.project_id
+                        from USER_PROJECT up
+                        left outer join USERS u on u.user_id = up.user_id
+                        left outer join PROJECT p on up.project_id = p.project_id
                         where u.username = :username
                           and p.Project_Name = :project_name
                           and up.PROJECT_START_DATE_TIME >= :project_start
@@ -305,9 +306,9 @@ class DBManager
                 PROJECT_START_DATE_TIME,
                 PROJECT_END_DATE_TIME,
                 TIME_TO_SEC(TIMEDIFF(PROJECT_END_DATE_TIME, PROJECT_START_DATE_TIME))/3600 as hours
-                from user_project up
-                left outer join users u on u.user_id = up.user_id
-                left outer join project p on up.project_id = p.project_id
+                from USER_PROJECT up
+                left outer join USERS u on u.user_id = up.user_id
+                left outer join PROJECT p on up.project_id = p.project_id
                 order by Project_Name"
             );
 
