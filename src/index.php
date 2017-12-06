@@ -16,7 +16,23 @@ use voluntrack\User;
 //echo phpinfo();
 //var_dump($_SESSION);
 if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
-    echo "<a href=\"voluntrack/logout.php\">Logout</a><br>";
+	if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
+		echo "<a href=\"voluntrack/adminreport_view.php\">Organizational Time Report</a><br>";
+	}
+	
+	echo "<div class=\"container\">";
+	echo "<div class=\"panel panel-primary\">";
+	echo "<div class=\"panel-heading\">Welcome "; echo $_SESSION['user']; echo"</div>";
+	echo "<div class=\"panel-body\">";
+	echo "<h4>Please choose an option</h4>";
+	echo "<div class=\"btn-group-vertical\">";
+    echo "<a class=\"btn btn-primary btn-lg\" href=\"voluntrack/timeentry_view.php\"><span class=\"glyphicon glyphicon-time\"></span> Enter Time</a>";
+    echo "<a class=\"btn btn-primary btn-lg\" href=\"voluntrack/timereport_view.php\"><span class=\"glyphicon glyphicon-list\"></span> My Time Report</a>";
+    echo "<a class=\"btn btn-primary btn-lg\" href=\"voluntrack/logout.php\"><span class=\"glyphicon glyphicon-log-out\"></span> Logout</a>";
+    echo "</div>";
+	echo "</div>";
+	echo "</div>";
+	echo "</div>";
 }
 else {
 	echo "<div class=\"container\">";
@@ -24,24 +40,12 @@ else {
 	echo "<div class=\"panel-heading\">Welcome</div>";
 	echo "<div class=\"panel-body\">";
 	echo "<h4>Login</h4>";
-	echo "<a class=\"btn btn-primary btn-lg\" href=\"voluntrack/login_view.php\" role=\"button\">Login</a>";
+	echo "<a class=\"btn btn-primary btn-lg\" href=\"voluntrack/login_view.php\" role=\"button\"><span class=\"glyphicon glyphicon-log-in\"></span> Login</a>";
 	echo "<h4>New user? Register Now!</h4>";
-	echo "<a class=\"btn btn-primary btn-lg\" href=\"voluntrack/register_view.php\" role=\"button\">Register</a>";
+	echo "<a class=\"btn btn-primary btn-lg\" href=\"voluntrack/register_view.php\" role=\"button\"><span class=\"glyphicon glyphicon-user\"></span> Register</a>";
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";
-}
-
-if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
-    echo "<a href=\"voluntrack/timeentry_view.php\">Enter Time</a><br>";
-}
-
-if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
-	echo "<a href=\"voluntrack/timereport_view.php\">My Time Report</a><br>";
-	
-	if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
-		echo "<a href=\"voluntrack/adminreport_view.php\">Organizational Time Report</a><br>";
-	}
 }
 
 ?>
