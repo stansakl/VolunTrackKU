@@ -1,20 +1,41 @@
-.navbar {
-     margin-bottom: 20;
-     border-radius: 0;
-  }
+.navbar  {
+    margin-bottom: 20;
+    border-radius: 0; 
+}
+
+li a {
+	color: #fff;
+	padding-top:20px;
+	margin: 5px;
+	background-color: teal;
+}
+
+.custnav {
+	 padding-top:30px;
+	 font-size:20px;
+	 padding-right: 25px;
+	 padding-left: 25px
+}
   
-
-
  .logoname { 
- font-size: 50px;
- padding:55px 15px;
- line-height: 0px;
- color:#fff;}
+	font-size: 50px;
+	padding:55px 15px;
+	line-height: 0px;
+	color:#fff;
+}
+
+.btn-group-vertical a {
+   margin-bottom: 10px;
+	
+}
+
+.userinfocust {
+	background-color:#337ab7;
+    position: relative;
+    display: block;
+    padding: 20px 15px;
+}
  
-
-
 @include media-breakpoint-up(sm) {
-  
     .logoname{ font-size: 60px; }
- 
 }
