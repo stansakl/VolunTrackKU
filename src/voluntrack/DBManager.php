@@ -54,10 +54,11 @@ class DBManager
         catch(\PDOException $e)
         {
             echo "Connection failed: " . $e->getMessage();
+            $_SESSION['error'] = "Connection failed";
         }
-        finally {
+      /*   finally {
             return $conn;
-        }
+        } */
     }
 
     /**
@@ -69,22 +70,26 @@ class DBManager
     {
         
         $password = password_hash($password, PASSWORD_DEFAULT);
-
-        try {
-            $conn = $this->get_connection();
-            $stmt = $conn->prepare("INSERT INTO USERS (NAME_FIRST, NAME_LAST, NAME_MIDDLE, USERNAME, PASSWORD )
-            VALUES (:firstname, :lastname, :middlename, :username, :password)");
-            $stmt->bindParam(':firstname', $first);
-            $stmt->bindParam(':lastname', $last);
-            $stmt->bindParam(':middlename', $middle);
-            $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':password', $password);
-            $stmt->execute();
-
-        } catch (\Exception $e) {
-            throw new \Exception("Error registering user!", 1);
-
-        }
+    
+            try {
+                $conn = $this->get_connection();
+                if(defined($conn)) {
+                    $stmt = $conn->prepare("INSERT INTO USERS (NAME_FIRST, NAME_LAST, NAME_MIDDLE, USERNAME, PASSWORD )
+                    VALUES (:firstname, :lastname, :middlename, :username, :password)");
+                    $stmt->bindParam(':firstname', $first);
+                    $stmt->bindParam(':lastname', $last);
+                    $stmt->bindParam(':middlename', $middle);
+                    $stmt->bindParam(':username', $username);
+                    $stmt->bindParam(':password', $password);
+                    $stmt->execute();
+                }   else {
+                    $_SESSION['error'] = "Unable to establish a database connection";
+                    throw new \Exception("No connection!");
+                }            
+    
+            } catch (\Exception $e) {
+                throw new \Exception("Error registering user!", 1);         
+            }
     }
 
     /**
