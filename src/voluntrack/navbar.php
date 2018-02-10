@@ -9,7 +9,7 @@
     </div>
 <?php
 if((isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true))) {
-  if (basename($_SERVER['PHP_SELF'])=='index.php'){
+  if (basename($_SERVER['PHP_SELF']) == 'index.php'){
   echo "<ul class=\"nav navbar-nav custnav\">";
   echo "<li><a href=\"voluntrack/timeentry_view.php\"><span class=\"glyphicon glyphicon-time\"></span> Enter Time</a></li>";
   echo "<li><a href=\"voluntrack/timereport_view.php\"><span class=\"glyphicon glyphicon-list\"></span> My Report</a></li>";
