@@ -46,6 +46,7 @@ require_once "htmlconstants.php";
 	  </div>
 	</div>
 <?php
+/*
 if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
     echo "<a href=\"timeentry_view.php\">Enter Time</a><br>";
 	echo "<a href=\"timereport_view.php\">My Time Report</a><br>";
@@ -55,6 +56,6 @@ if(isset($_SESSION['logged_in']) && ($_SESSION['logged_in'] == true)) {
     }
     
     echo "<a href=\"logout.php\">Logout</a><br>";
-}
+}*/
 ?>
  </body>
