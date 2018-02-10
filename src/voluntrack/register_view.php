@@ -20,7 +20,7 @@ require "htmlconstants.php";
 		  echo "<div class=\"alert alert-danger\">" . $_SESSION['error'] . "</div>";
 	  }
 	  ?>
-        <form  action="register.php" method="post">
+        <form  action="register_controller.php" method="post">
 		    <div class="form-group">
 				<input type="text" class="form-control input-lg" name="firstname" value="" placeholder="First Name" required>
 			</div>

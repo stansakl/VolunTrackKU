@@ -54,11 +54,11 @@ class DBManager
         catch(\PDOException $e)
         {
             echo "Connection failed: " . $e->getMessage();
-            $_SESSION['error'] = "Connection failed";
+           // $_SESSION['error'] = "Connection failed";
         }
-      /*   finally {
+         finally {
             return $conn;
-        } */
+        } 
     }
 
     /**
@@ -73,7 +73,7 @@ class DBManager
     
             try {
                 $conn = $this->get_connection();
-                if(defined($conn)) {
+                if($conn != null) {
                     $stmt = $conn->prepare("INSERT INTO USERS (NAME_FIRST, NAME_LAST, NAME_MIDDLE, USERNAME, PASSWORD )
                     VALUES (:firstname, :lastname, :middlename, :username, :password)");
                     $stmt->bindParam(':firstname', $first);

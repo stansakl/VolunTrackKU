@@ -36,6 +36,3 @@ li a {
     padding: 20px 15px;
 }
  
-@include media-breakpoint-up(sm) {
-    .logoname{ font-size: 60px; }
-}
